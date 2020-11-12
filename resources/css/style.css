@@ -1,0 +1,762 @@
+/*-----------------------------------------------------------*/
+/* BASIC SETUP */
+/*-----------------------------------------------------------*/
+
+*{
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/*Define fonts and background-color*/
+html,
+body {
+    background-color: #fff;
+    color: #555;
+    font-family: 'Lato', 'Arial', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+}
+
+
+/* Clear floats */
+.clearfix {zoom: 1}
+.clearfix:after {
+    content: '.';
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+
+/*-----------------------------------------------------------*/
+/* REUSABLE COMPONENTS */
+/*-----------------------------------------------------------*/
+/*Define max-width for rows and centered margin*/
+.row {
+    max-width: 1140px;
+    margin: 0 auto 0 auto;
+}
+
+
+
+/*-----------------------------------------------------------*/
+/* Building the favourite meals section (Part 1 & Part 2)
+- How to put content on a website directly from CSS with the :after pseudo-class;
+- We'll use the fluid grid for the first time;
+- We'll learn how to use icons;
+/*-----------------------------------------------------------*/
+
+/*We'll use padding to put whitespace between elements in order to have some sections with background color and with padding we can preserve the background color making sure the space is inside the boxes*/
+section {
+    padding: 80px 0;
+}
+
+.box {
+    padding: 1%;
+}
+
+
+
+/*-----------------------------------------------------------*/
+/* Building the header (Part 1 & Part 2 & Part 3): 
+- New HTML elements: header, nav, ul, li;
+- Put text on and image: make image darker;
+- How to make that image as high as the browser viewport;
+- How to make a vertically a horizontally centered box;
+- How to design buttons;
+- The 4 link states in CSS: link, visited, hover, active;
+- CSS3 transitions for small animations;
+- How to create a simple navigation; */
+/*-----------------------------------------------------------*/
+
+h1, h2, h3{
+    
+    font-weight: 300;
+    text-transform: uppercase;
+    
+}
+
+h1 {
+    margin: 0;
+    margin-bottom: 20px;
+    color: #fff;
+    /*Will be 240% of the 20px declared in the "html" container.*/
+    font-size: 240%;
+    word-spacing: 4px;
+    letter-spacing: 1px;
+}
+
+h2 {
+    font-size: 180%;
+    word-spacing: 2px;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+h3 {
+    font-size: 110%;
+    margin-bottom: 15%;
+}
+
+/*h2:after means something will happen after h2. We need alwats to specify the content on an pseudo-after class*/
+h2:after {
+    display: block;
+    height: 2px;
+    background-color: #e67e22;
+    content: " ";
+    width: 100px;
+    
+    /* Centered */
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+
+/*-----------------------------------------------------------*/
+/* Building the features section (Part 1 & Part 2)
+- How to make a grid of beautiful images;
+- How to make a nice "zoom-in" transition, only using CSS;
+- A way to make <img> elements darker;
+/*-----------------------------------------------------------*/
+
+
+/*------------------------PARAGRAPHS-------------------------*/
+.long-copy {
+    line-height: 145%;
+    width: 70%;
+    margin-left: 15%;
+    word-spacing: 1px;
+}
+
+.box p {
+    font-size: 90%;
+    line-height: 145%;
+    text-align: justify;
+}
+
+
+/*------------------------ICONS-------------------------*/
+.icon-big {
+    font-size: 300%;
+    display: block;
+    color: #e67e22;
+    margin-bottom: 10px;
+}
+
+.icon-small{
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    color: #e67e22;
+    font-size: 120%;
+    margin-right: 10px;
+    
+    /* Secrets to align text and icons*/
+    line-height: 120%;
+    vertical-align: middle; 
+    margin-top: -4px;
+}
+
+
+/*------------------------LINKS-------------------------*/
+
+a:link,
+a:visited {
+    color: #e67e22;
+    text-decoration: none;
+    padding-bottom: 1px;
+    border-bottom: 1px solid #e67e22;
+    -webkit-transition: border-bottom 0.2s, color 0.2s;
+    transition: border-bottom 0.2s, color 0.2s; 
+}
+
+a:hover,
+a:active {
+    color: #555;
+    border-bottom: 1px solid transparent;
+}
+/*-----------------------------------------------------------*/
+/*Buttons or links can have different states: link, visited, active and hover. 
+link - how the element looks in normal state
+visited - how the element will look after clicked
+active - how the element will look when clicked 
+hover - how the element will look when we put the mouse over it*/
+/*-----------------------------------------------------------*/
+
+/*-------------------------BUTTONS---------------------------*/
+.btn:link, 
+.btn:visited,
+input[type=submit] {
+    
+    /*Its just like and inline element, but can have heading and margin.*/
+    display: inline-block;
+    
+    /*10px of padding on top and bottom and 30px left and right*/
+    padding: 10px 30px;
+    
+    font-weight: 300;
+    text-decoration: none;
+    border-radius: 200px;
+    
+    /*Apply color transition time for the buttons*/
+    -webkit-transition: background-color 0.2s, border 0.2s, color 0.2s;
+    transition: background-color 0.2s, border 0.2s, color 0.2s;
+}
+
+.btn-full:link,
+.btn-full:visited,
+input[type=submit] {
+    background-color: #e67e22;
+    border: 1px solid #e67e22;
+    color: #fff;
+    margin-right: 15px;
+}
+
+.btn-ghost:link,
+.btn-ghost:visited{
+    border: 1px solid #e67e22;
+    color: #e67e22;
+}
+
+.btn:hover,
+.btn:active,
+input[type=submit]:hover {
+    background-color: #a15512;
+    
+}
+
+.btn-full:hover,
+.btn-full:active,
+input[type=submit]:hover {
+    border: 1px solid #a15512;
+}
+
+.btn-ghost:hover,
+.btn-ghost:active{
+    border: 1px solid #a15512;
+    
+    /*Put font-color in white.*/
+    color: #fff;
+}
+
+/*---------------------------HEADER--------------------------*/
+header {
+    
+    /*Apply the gradient to the background image, making it look faded*/
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(img/hero-min.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(img/hero-min.jpg);
+    background-attachment: fixed;
+    
+    /*To make the image it always centered*/    
+    background-size: cover;
+    background-position: center;
+    
+    /*It means it will be 100% of the viewport*/    
+    height: 100vh;
+    
+}
+
+.hero-text-box {
+    position: absolute;
+    width: 1140px;
+    top: 50%;
+    left: 50%;
+    
+    /*Translate the element half of its width and of its height, up and to the left*/
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+/*---------------------------LOGO--------------------------*/
+.logo {
+    height: 100px;
+    width: auto;
+    float: left;
+    margin-top: 20px;
+}
+
+.logo-black {
+    display: none;
+    height: 50px;
+    width: auto;
+    float: left;
+    margin: 5px 0;
+}
+
+
+/*---------------------------------------------------------*/
+/* NAVIGATION */
+/*---------------------------------------------------------*/
+
+/* Main navigation */
+.main-nav {
+    float: right;
+    
+    /* Get rid of the dots on the left side of the elements of the list */
+    list-style: none;
+    margin-top: 55px;
+}
+
+/* Select all li elements inside "main-nav" */
+.main-nav li{
+    /* Its just like and inline element, but can have heading and margin. */
+    display: inline-block;
+    margin-left: 40px;
+}
+
+/* Select all a elements inside li */
+.main-nav li a:link,
+.main-nav li a:visited {
+    padding: 8px 0;
+    color: #fff;
+    
+    /* Get rid of the text underline from the ordered list */
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 90%;
+    border-bottom: 2px solid transparent;
+    -webkit-transition:  border-bottom 0.5s;
+    transition:  border-bottom 0.5s;
+}
+
+.main-nav li a:hover,
+.main-nav li a:active {
+    border-bottom: 2px solid #e67e22;
+}
+
+/* Mobile navigation */
+.mobile-nav-icon {
+    float: right;
+    margin-top: 30px;
+    
+    /* Since href is not specified, we won't have the pointer withou the cursor property */
+    cursor: pointer;
+    display: none;
+}
+
+.mobile-nav-icon i {
+    font-size: 200%;
+    color: #fff;
+    
+}
+
+/* Sticky navigation */
+.sticky {
+    /* Means the position will stay the same when we scroll the page */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    background-color: rgba(253, 246, 246, 0.95);
+    box-shadow: 0 2px 2px #efefef;
+    /*Make the element highest than any other element */
+    z-index: 9999;
+}
+
+.sticky .main-nav { margin-top: 18px;}
+
+.sticky .main-nav li a:link,
+.sticky .main-nav li a:visited {
+    padding: 15px 0;
+    color: #555; 
+}
+
+.sticky .logo { display: none}
+.sticky .logo-black { display: block; }
+/*---------------------------------------------------------*/
+/* FEATURES */
+/*---------------------------------------------------------*/
+.section-features .long-copy {
+    margin-bottom: 30px;
+}
+
+
+
+
+
+
+/*---------------------------------------------------------*/
+/* MEALS */
+/*---------------------------------------------------------*/
+
+.section-meals {
+    padding: 0;
+}
+
+.meals-showcase {
+    list-style: none;
+    width:100%;
+}
+
+.meals-showcase li {
+    display: block;
+    float: left;
+    width: 25%;
+}
+
+.meal-photo {
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+    
+    /* Get the container darker so that images with opacity show a beautiful darker shade */
+    background-color: #000;
+}
+
+.meal-photo img {
+    opacity: 0.7;
+    width: 100%;
+    height: auto;
+    -webkit-transform: scale(1.15);
+    transform: scale(1.15);
+    -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+    transition: opacity 0.5s, -webkit-transform 0.5s;
+    transition: transform 0.5s, opacity 0.5s;
+    transition: transform 0.5s, opacity 0.5s, -webkit-transform 0.5s;
+}
+
+.meal-photo img:hover {
+    opacity: 1;
+    -webkit-transform: scale(1.03);
+    transform: scale(1.03);
+}
+
+
+/*-----------------------------------------------------------*/
+/* Building the how-it-works section:
+- How to draw circles with CSS;
+- A cool technique to make separations between sections;
+- How to incorporate App Store and Play Store bu*/
+/*-----------------------------------------------------------*/
+
+/*---------------------------------------------------------*/
+/* HOW IT WORKS */
+/*---------------------------------------------------------*/
+
+.section-steps {
+    background-color: #f3f3f3;
+}
+/* Selects the first of the 2 step-boxes */
+.steps-box:first-child {
+    text-align: right;
+    padding-right: 3%;
+    margin-top: 30px;
+}
+
+.steps-box:last-child {
+    padding-left: 3%;
+    margin-top: 70px;
+}
+
+.app-screen {
+    width: 40%;
+}
+
+.works-step {
+    margin-bottom: 50px;
+}
+
+.works-step:last-of-type {
+    margin-bottom: 80px;
+}
+
+.works-step div {
+    color: #e67e22;
+    border: 2px solid #e67e22;
+    
+    /* So that the text can be side by side with the number */
+    display: inline-block;
+    
+    border-radius: 50%;
+    height: 55px;
+    width: 55px;
+    text-align: center;
+    padding: 5px;
+    float: left;
+    font-size: 150%;
+    margin-right: 25px;
+}
+
+.btn-app:link,
+btn-app:visited {
+    border: 0;
+}
+
+.btn-app img {
+    height: 50px;
+    width: auto;
+    margin-right: 10px;
+    margin-top: 80px;  
+}
+
+
+/*-----------------------------------------------------------*/
+/* Building the cities section:
+- Practice our new skill set;
+- How to use small icons aligned with some text
+- How to style generic links*/
+/*-----------------------------------------------------------*/
+
+/*---------------------------------------------------------*/
+/* Cities-Section */
+/*---------------------------------------------------------*/
+
+.box img {
+    width: 100%;
+    height: auto;
+    padding-bottom: 0;
+    margin-bottom: 15px;
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+}
+
+.city-feature {
+    margin-bottom: 5px;
+}
+
+
+/*---------------------------------------------------------*/
+/* TESTIMONIALS */
+/*---------------------------------------------------------*/
+
+.section-testimonials {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.8)), to(rgba(0, 0, 0, 0.8))), url(img/back-customers-min.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(img/back-customers-min.jpg); 
+    background-size: cover;
+    color: #fff;
+    background-attachment: fixed;
+}
+
+blockquote {
+    padding: 2%;
+    font-style: italic;
+    line-height: 145%;
+    position: relative;
+    margin-top: 40px;
+}
+
+cite {
+    display: block;
+    font-size: 90%;
+    margin-top: 25px;   
+}
+
+blockquote:before {
+    content: "\201C";
+    font-size: 500%;
+    display: block;
+    position: absolute;
+    top: -5px;
+    left: -3px;
+}
+
+cite img {
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;    
+}
+
+/*---------------------------------------------------------*/
+/* SIGN UP */
+/*---------------------------------------------------------*/
+
+.section-plans {
+    background-color: #f4f4f4;
+}
+
+
+.plan-box {
+    background-color: #fff;
+    border-radius: 5px;
+    width: 90%;
+    margin-left:5%;
+    
+    /* x-axis y-axis blur color*/
+    -webkit-box-shadow: 0 2px 2px #efefef;
+    box-shadow: 0 2px 2px #efefef;
+}
+
+.plan-box div {
+    padding: 15px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.plan-box div:first-child {
+    background-color: #fcfcfc;
+    
+    /* make the top corners round because they went gone after giving it new color*/
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.plan-box div:last-child {
+    text-align: center;
+    border: 0;
+}
+
+.plan-price {
+    font-size: 300%;
+    margin-bottom: 10px;
+    font-weight: 100;
+    color: #e67e22;
+}
+
+.plan-price span {
+    font-size: 30%;
+    font-weight: 300;
+    
+}
+
+.plan-price-meal {
+    font-size: 80%;
+}
+
+.plan-box ul {
+    list-style: none;
+}
+
+/* Add whitespace between list elements */
+.plan-box ul li {
+    padding: 5px 0;
+}
+
+
+/*---------------------------------------------------------*/
+/* FORM */
+/*---------------------------------------------------------*/
+
+.contact-form {
+    width: 60%;
+    margin: 0 auto;
+}
+
+input[type=text],
+input[type=email],
+select,
+textarea {
+    width: 100%;
+    padding: 7px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
+textarea {
+    height: 100px;
+}
+
+input[type=checkbox] {
+    margin: 10px 5px 10px 0;
+}
+
+/* get rid of the chrome borders */
+*:focus {outline: none;}
+
+
+/*---------------------------------------------------------*/
+/* FOOTER */
+/*---------------------------------------------------------*/
+
+footer {
+    background-color: #333;
+    padding: 50px;
+    font-size: 80%;
+}
+
+.footer-nav {
+    list-style: none;
+    float: left;
+}
+
+.social-links {
+    list-style: none;
+    float: right;
+}
+
+.footer-nav li,
+.social-links li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.footer-nav li:last-child,
+social-links li:last-child {
+    margin-right: 0;
+}
+
+.footer-nav li a:link,
+.footer-nav li a:visited,
+.social-links li a:link,
+.social-links li a:visited {
+    text-decoration: none;
+    border: 0;
+    color: #888;
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+}
+
+.footer-nav li a:hover,
+.footer-nav li a:active {
+    color: #ddd;
+}
+
+.social-links li a:link,
+.social-links li a:visited {
+    font-size: 160%
+}
+
+.ion-social-facebook,
+.ion-social-twitter,
+.ion-social-googleplus-outline,
+.ion-social-instagram {
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+}
+
+
+
+.ion-social-facebook:hover {
+    color: #3b5998;
+}
+
+.ion-social-twitter:hover {
+    color: #55acee;
+}
+
+.ion-social-googleplus-outline:hover {
+    color: #dd4b39;
+}
+
+.ion-social-instagram:hover {
+    color: #e95950;
+}
+
+footer p {
+    color: #888;
+    text-align: center;
+    font-size: 50%;
+    margin-top: 20px; 
+}
+
+
+/*---------------------------------------------------------*/
+/* ANIMATIONS */
+/*---------------------------------------------------------*/
+
+
+.js--wp-1,
+.js--wp-2,
+.js--wp-3 {
+    opacity: 0;
+    animation-duration: 1s;
+}
+
+.js--wp-4 {
+    animation-duration: 1s;
+}
+
